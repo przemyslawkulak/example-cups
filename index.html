@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <title>Filling the cups</title>
+    <style>
+
+        
+        h1 {
+            font-family: 'Lobster', cursive;
+            text-align: center;
+            font-size: 60px;
+            transform: rotate(-10deg);
+        }
+        .cup {
+            width: 150px;
+            height: 200px;
+            border-left: 3px solid black;
+            border-right: 3px solid black;
+            border-bottom: 3px solid black;
+            border-radius: 0 0 20px 20px;
+            cursor: pointer;
+            float: left;
+            margin: 20px;
+            background-size: 200% 200%;
+            
+            transition: background-position 1000ms;
+        }
+        .yellow{
+            background-image: linear-gradient(to top, #FFF700 50%, transparent 50%);
+        }
+        .green{
+            background-image: linear-gradient(to top, #299617 50%, transparent 50%);
+        }
+        .blue{
+            background-image: linear-gradient(to top, #5DADEC 50%, transparent 50%);
+        }
+        .purple{
+            background-image: linear-gradient(to top, #9c51b6 50%, transparent 50%);
+        }
+        .red{
+            background-image: linear-gradient(to top, #ff3855 50%, transparent 50%);
+        }
+        .brown{
+            background-image: linear-gradient(to top, #a83731 50%, transparent 50%);
+        }
+        /*
+        yellow :#FFF700;
+        green: #299617;
+        blue: #5DADEC;
+        purple: #9c51b6;
+        red: #ff3855;
+        brown: #a83731
+        */
+    </style>
+</head>
+<body>
+    <h1>Filling the cups</h1>
+
+    <div class='cup yellow' level='0'></div>
+    <div class='cup green' level='0'></div>
+    <div class='cup blue' level='0'></div>
+    <div class='cup purple' level='0'></div>
+    <div class='cup red' level='0'></div>
+    <div class='cup brown' level='0'></div>
+</body>
+<script>
+    function cupClick(evt){
+            let level = Number(this.getAttribute('level'));
+            level += 19;
+            if (level <= 100){
+                this.style.backgroundPosition = '0 ' + level + '%';
+                this.setAttribute('level', level);
+            } else{
+                this.style.cursor = 'not-allowed';
+            }
+        }
+
+    let cups = document.querySelectorAll('.cup');
+    cups.forEach( cup => {
+        cup.addEventListener('click', cupClick)
+
+    })
+
+
+</script>
+</html>
